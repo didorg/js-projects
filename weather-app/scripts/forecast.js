@@ -1,4 +1,4 @@
-const key = 'ACCUWEATHER_KEY';
+const key = 'goTo_https://developer.accuweather.com/user/me/apps';
 
 // get weather information
 const getWeather = async (id) => {
