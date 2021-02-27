@@ -21,12 +21,12 @@ const updateUI = (data) => {
   // update the night/day & icon images
   const iconSrc = `img/icons/${weather.WeatherIcon}.svg`;
   icon.setAttribute('src', iconSrc);
-  
+
   const timeSrc = weather.IsDayTime ? 'img/day.svg' : 'img/night.svg';
   time.setAttribute('src', timeSrc);
 
   // remove the d-none class if present
-  if(card.classList.contains('d-none')){
+  if (card.classList.contains('d-none')) {
     card.classList.remove('d-none');
   }
 };
@@ -42,7 +42,7 @@ const updateCity = async (city) => {
 cityForm.addEventListener('submit', e => {
   // prevent default action
   e.preventDefault();
-  
+
   // get city value
   const city = cityForm.city.value.trim();
   cityForm.reset();
@@ -51,4 +51,13 @@ cityForm.addEventListener('submit', e => {
   updateCity(city)
     .then(data => updateUI(data))
     .catch(err => console.log(err));
+
+  // set local storage
+  localStorage.setItem('city', city);
 });
+
+if(localStorage.getItem('city')){
+  updateCity(localStorage.getItem('city'))
+    .then(data => updateUI(data))
+    .catch(err => console.log(err));
+}
