@@ -1,3 +1,5 @@
 
 .DS_Store
 weather-app/Key.txt
+node_modules/
+algos/package-lock.json
